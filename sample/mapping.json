@@ -1,0 +1,39 @@
+{
+  "tenant_id": "acme",
+  "database": "CustomerSales",
+  "default_schema": "dbo",
+  "notes": "What a tenant produces from the mapping screen in the MVP. This is the only thing the model is told about the database, and the only thing a query is allowed to touch.",
+  "tables": [
+    {
+      "name": "fact_sales",
+      "schema": "dbo",
+      "description": "one row per sales line",
+      "columns": [
+        { "name": "sale_id", "role": "key" },
+        { "name": "sale_date", "role": "date", "description": "transaction date" },
+        { "name": "amount", "role": "amount", "description": "net line value, store currency" },
+        { "name": "quantity", "role": "quantity" },
+        { "name": "store_id", "role": "key" },
+        { "name": "product_id", "role": "key" }
+      ]
+    },
+    {
+      "name": "dim_store",
+      "schema": "dbo",
+      "columns": [
+        { "name": "store_id", "role": "key" },
+        { "name": "store_name", "role": "store" },
+        { "name": "region", "role": "other" }
+      ]
+    },
+    {
+      "name": "dim_product",
+      "schema": "dbo",
+      "columns": [
+        { "name": "product_id", "role": "key" },
+        { "name": "product_name", "role": "product" },
+        { "name": "category", "role": "category" }
+      ]
+    }
+  ]
+}
